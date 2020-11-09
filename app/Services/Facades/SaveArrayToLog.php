@@ -15,7 +15,9 @@ use Illuminate\Support\Facades\Facade;
 class SaveArrayToLog extends Facade
 {
 
-
+    /**
+     * @return string
+     */
     protected static function getFacadeAccessor()
     {
         return 'SaveArrayToLog';

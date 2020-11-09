@@ -9,6 +9,29 @@ use App\SolidPrinciples\O\Example\{ClassLogger, FileLogger, Product};
 class OModel
 {
 
+    /**
+     * @return string
+     */
+    public static function getName()
+    {
+        return 'Принцип открытости/закрытости (Open-closed Principle)';
+    }
+
+    /**
+     * @return string
+     */
+    public static function getDescription()
+    {
+
+        return '
+        <b>Программные сущности должны быть открыты для расширения, но закрыты для модификации.</b><br />
+
+        Программные сущности (классы, модули, функции и прочее) должны быть расширяемыми без изменения своего содержимого. Если строго соблюдать этот принцип, то можно регулировать поведение кода без изменения самого исходника.';
+    }
+
+    /**
+     * @return array
+     */
     public function run()
     {
         $logger = new ClassLogger();
@@ -21,19 +44,5 @@ class OModel
         $product = new Product($logger);
         $product->setPrice();
         return ['Смотри ' . __NAMESPACE__];
-    }
-
-    public static function getName()
-    {
-        return 'Принцип открытости/закрытости (Open-closed Principle)';
-    }
-
-    public static function getDescription()
-    {
-
-        return '
-        <b>Программные сущности должны быть открыты для расширения, но закрыты для модификации.</b><br />
-
-        Программные сущности (классы, модули, функции и прочее) должны быть расширяемыми без изменения своего содержимого. Если строго соблюдать этот принцип, то можно регулировать поведение кода без изменения самого исходника.';
     }
 }

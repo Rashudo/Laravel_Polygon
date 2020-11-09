@@ -3,7 +3,10 @@
 
 namespace App\SolidPrinciples\L\Example;
 
-
+/**
+ * Class Duck
+ * @package App\SolidPrinciples\L\Example
+ */
 class Duck extends Bird
 {
     /**

@@ -11,12 +11,18 @@ namespace App\SolidPrinciples\S\Example;
 class ClassLogger
 {
 
+    /**
+     * @param string $string
+     */
     public function log(string $string)
     {
 
         $this->saveToDb($string);
     }
 
+    /**
+     * @param string $string
+     */
     private function saveToDb(string $string)
     {
         //save logs to db

@@ -14,6 +14,9 @@ use App\SolidPrinciples\I\Example\Interfaces\SuperTransformerInterface;
 class CarTransformer implements CarTransformerInterface
 {
 
+    /**
+     *
+     */
     public function toCar()
     {
         // TODO: Implement toCar() method.

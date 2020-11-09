@@ -4,27 +4,14 @@
 namespace App\DesignPatterns\Structural\Facade;
 
 
+use App\DesignPatterns\Structural\Facade\Interfaces\OrderSaveInterface;
 use App\DesignPatterns\Structural\Facade\Subsystem\OrderSave;
 use App\DesignPatterns\Structural\Facade\Subsystem\OrderSaveProducts;
 use App\DesignPatterns\Structural\Facade\Subsystem\OrderSaveUser;
 use App\Models\Order;
-use App\DesignPatterns\Structural\Facade\Interfaces\OrderSaveInterface;
 
 class OrderSaveFacade implements OrderSaveInterface
 {
-    public function save(Order &$order, array &$data): array
-    {
-        $return = [];
-
-        $return[] = (new OrderSaveProducts($order, $data))->run();
-        $return[] = (new OrderSaveUser($order, $data))->run();
-        $return[] = (new OrderSave($order, $data))->run();
-
-
-        return $return;
-    }
-
-
     public static function getName()
     {
         return 'Фасад';
@@ -39,5 +26,17 @@ class OrderSaveFacade implements OrderSaveInterface
         То есть, это как руль, селектор и педали в машине, они выведены наружу, они понятны. А каждое взаимодействие с этими элементами вызывает обращение к двигателю, колесам, коробке и т.д.<br /><br />
         <b>Да, методы фасада лучше бы делать статическими!</b>
         ';
+    }
+
+    public function save(Order &$order, array &$data): array
+    {
+        $return = [];
+
+        $return[] = (new OrderSaveProducts($order, $data))->run();
+        $return[] = (new OrderSaveUser($order, $data))->run();
+        $return[] = (new OrderSave($order, $data))->run();
+
+
+        return $return;
     }
 }

@@ -4,8 +4,6 @@
 namespace App\SolidPrinciples\O\Example;
 
 
-use Psr\Log\LoggerInterface;
-
 /**
  * Class ClassLogger
  * @package App\SolidPrinciples\S\Example
@@ -13,6 +11,9 @@ use Psr\Log\LoggerInterface;
 class ClassLogger
 {
 
+    /**
+     * @param string $string
+     */
     public function log(string $string)
     {
         //Нарушается второй принцип sOlid
@@ -21,6 +22,9 @@ class ClassLogger
         $this->saveToDb($string);
     }
 
+    /**
+     * @param string $string
+     */
     private function saveToDb(string $string)
     {
         //save logs to db

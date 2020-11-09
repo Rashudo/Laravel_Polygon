@@ -6,6 +6,11 @@ namespace App\Services;
 
 use App\Services\Contracts\SaveArrayLog;
 
+/**
+ * Service example
+ * Class SaveArrayToLog
+ * @package App\Services
+ */
 class SaveArrayToLog implements SaveArrayLog
 {
 
@@ -22,7 +27,7 @@ class SaveArrayToLog implements SaveArrayLog
         foreach ($array as $key => $value) {
             $return .= $key . ' => ' . $value . PHP_EOL;
         }
-        $return .= '====================='  . PHP_EOL;
+        $return .= '=====================' . PHP_EOL;
         return $return;
     }
 }

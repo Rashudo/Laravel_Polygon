@@ -3,7 +3,10 @@
 
 namespace App\SolidPrinciples\L\Example;
 
-
+/**
+ * Class BirdMove
+ * @package App\SolidPrinciples\L\Example
+ */
 class BirdMove
 {
 

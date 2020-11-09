@@ -3,10 +3,15 @@
 
 namespace App\Services;
 
-
+/**
+ * Class HttpSender
+ * @package App\Services
+ */
 class HttpSender implements Contracts\HttpSender
 {
-    CONST USERAGENT = 'Site Poligon';
+    const USERAGENT = 'Site Poligon';
+    const CONNECT_TIMEOUT = 5;
+    const RUNTIME_TIMEOUT = 3;
 
     /**
      * @param $link
@@ -14,10 +19,9 @@ class HttpSender implements Contracts\HttpSender
      */
     public static function curlGet($link)
     {
-        $resp = false;
         $curl = curl_init();
         curl_setopt_array($curl, array(
-            CURLOPT_CONNECTTIMEOUT => 5,
+            CURLOPT_CONNECTTIMEOUT => self::CONNECT_TIMEOUT,
             CURLOPT_TIMEOUT => 5,
             CURLOPT_RETURNTRANSFER => 1,
             CURLOPT_URL => $link,
@@ -25,12 +29,9 @@ class HttpSender implements Contracts\HttpSender
         ));
         $resp = curl_exec($curl);
         curl_close($curl);
-//        error_log('-------------------------');
-//        error_log('GET');
-//        error_log($link);
-//        error_log('Answer:' . $resp);
-//        error_log('-------------------------');
-
+        if (!empty($err) || $resp === false || empty($resp)) {
+            logger()->error(__CLASS__ . ' -> ERROR in ' . __METHOD__ . ' -> ' . $link);
+        }
         return $resp;
     }
 
@@ -43,12 +44,11 @@ class HttpSender implements Contracts\HttpSender
      */
     public static function curlPost($link, $post = '', array $custom_headers = [])
     {
-        $resp = false;
         $curl = curl_init();
         $headers = $custom_headers;
         curl_setopt_array($curl, array(
-            CURLOPT_CONNECTTIMEOUT => 3,
-            CURLOPT_TIMEOUT => 3,
+            CURLOPT_CONNECTTIMEOUT => self::CONNECT_TIMEOUT,
+            CURLOPT_TIMEOUT => self::RUNTIME_TIMEOUT,
             CURLOPT_FAILONERROR => 1,
             CURLOPT_RETURNTRANSFER => 1,
             CURLOPT_POST => 1,
@@ -61,7 +61,7 @@ class HttpSender implements Contracts\HttpSender
         $err = curl_error($curl);
         curl_close($curl);
         if (!empty($err) || $resp === false || empty($resp)) {
-            logger()->error('core/model/HttpGetter -> ERROR curlPost -> ' . $link);
+            logger()->error(__CLASS__ . ' -> ERROR in ' . __METHOD__ . ' -> ' . $link);
         }
         return $resp;
     }

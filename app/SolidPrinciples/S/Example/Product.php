@@ -3,7 +3,10 @@
 
 namespace App\SolidPrinciples\S\Example;
 
-
+/**
+ * Class Product
+ * @package App\SolidPrinciples\S\Example
+ */
 class Product
 {
     /**
@@ -11,11 +14,18 @@ class Product
      */
     private $logger;
 
+    /**
+     * Product constructor.
+     * @param ClassLogger $logger
+     */
     public function __construct(ClassLogger $logger)
     {
         $this->logger = $logger;
     }
 
+    /**
+     *
+     */
     public function setPrice()
     {
         try {
