@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\Services;
 
@@ -7,7 +8,7 @@ namespace App\Services;
  * Class HttpSender
  * @package App\Services
  */
-class HttpSender implements Contracts\HttpSender
+final class HttpSender implements Contracts\HttpSender
 {
     const USERAGENT = 'Site Poligon';
     const CONNECT_TIMEOUT = 5;

@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
@@ -8,11 +9,21 @@ use App\SolidPrinciples\I\IModel;
 use App\SolidPrinciples\L\LModel;
 use App\SolidPrinciples\O\OModel;
 use App\SolidPrinciples\S\SModel;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 
-class SolidController extends Controller
+/**
+ * Class SolidController
+ * @package App\Http\Controllers
+ */
+final class SolidController extends Controller
 {
 
-    public function s()
+    /**
+     * @return Application|Factory|View
+     */
+    public function s(): View|Factory|Application
     {
         $name = SModel::getName();
         $content = SModel::getDescription();
@@ -20,7 +31,10 @@ class SolidController extends Controller
         return view('patternsDesc', compact(['content', 'name', 'return']));
     }
 
-    public function o()
+    /**
+     * @return Factory|View|Application
+     */
+    public function o(): Factory|View|Application
     {
         $name = OModel::getName();
         $content = OModel::getDescription();
@@ -28,7 +42,10 @@ class SolidController extends Controller
         return view('patternsDesc', compact(['content', 'name', 'return']));
     }
 
-    public function l()
+    /**
+     * @return Application|Factory|View
+     */
+    public function l(): View|Factory|Application
     {
         $name = LModel::getName();
         $content = LModel::getDescription();
@@ -36,7 +53,10 @@ class SolidController extends Controller
         return view('patternsDesc', compact(['content', 'name', 'return']));
     }
 
-    public function i()
+    /**
+     * @return Application|Factory|View
+     */
+    public function i(): View|Factory|Application
     {
         $name = IModel::getName();
         $content = IModel::getDescription();
@@ -44,7 +64,10 @@ class SolidController extends Controller
         return view('patternsDesc', compact(['content', 'name', 'return']));
     }
 
-    public function d()
+    /**
+     * @return Application|Factory|View
+     */
+    public function d(): View|Factory|Application
     {
         $name = DModel::getName();
         $content = DModel::getDescription();

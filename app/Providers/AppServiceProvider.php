@@ -8,6 +8,10 @@ use App\Services\Contracts\HttpSender;
 use App\Services\HttpSender as SenderClass;
 use Illuminate\Support\ServiceProvider;
 
+/**
+ * Class AppServiceProvider
+ * @package App\Providers
+ */
 class AppServiceProvider extends ServiceProvider
 {
     public $bindings = [

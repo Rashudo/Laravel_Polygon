@@ -1,12 +1,18 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\DesignPatterns\Structural\Adapter\Classes;
 
 
 use App\DesignPatterns\Structural\Adapter\Interfaces\SelfWrittenInterface;
+use Exception;
 
-class LibsAdapter implements SelfWrittenInterface
+/**
+ * Class LibsAdapter
+ * @package App\DesignPatterns\Structural\Adapter\Classes
+ */
+final class LibsAdapter implements SelfWrittenInterface
 {
     /**
      * @var ThirdPartyLib
@@ -18,30 +24,9 @@ class LibsAdapter implements SelfWrittenInterface
         $this->libObject = new ThirdPartyLib();
     }
 
-
-    public function method_one(): string
-    {
-        return $this->libObject->party_one();
-    }
-
-    public function method_two(): string
-    {
-        return $this->libObject->party_two();
-    }
-
     public static function getName()
     {
         return 'Адаптер';
-    }
-
-    public function __call($name, $arguments)
-    {
-        if (method_exists($this->libObject, $name)) {
-            //return $this->libObject->{$name}();
-            return call_user_func_array([$this->libObject, $name], $arguments);
-        } else {
-            throw new \Exception("Метод $name не найден");
-        }
     }
 
     public static function getDescription()
@@ -63,5 +48,25 @@ class LibsAdapter implements SelfWrittenInterface
         ];</i>
 
         ';
+    }
+
+    public function method_one(): string
+    {
+        return $this->libObject->party_one();
+    }
+
+    public function method_two(): string
+    {
+        return $this->libObject->party_two();
+    }
+
+    public function __call($name, $arguments)
+    {
+        if (method_exists($this->libObject, $name)) {
+            //return $this->libObject->{$name}();
+            return call_user_func_array([$this->libObject, $name], $arguments);
+        } else {
+            throw new Exception("Метод $name не найден");
+        }
     }
 }

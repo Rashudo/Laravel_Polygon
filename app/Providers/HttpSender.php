@@ -1,11 +1,16 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class HttpSender extends ServiceProvider
+/**
+ * Class SaveArrayToLog
+ * @package App\Providers
+ */
+final class HttpSender extends ServiceProvider
 {
     /**
      * Register services.
@@ -26,6 +31,5 @@ class HttpSender extends ServiceProvider
      */
     public function boot()
     {
-
     }
 }

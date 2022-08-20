@@ -1,13 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
+declare(strict_types=1);
 
+namespace App\Http\Controllers;
 
 use App\Services\Contracts\HttpSender;
 use App\Services\Contracts\SaveArrayLog;
-use SimpleXMLElement;
+use Illuminate\Contracts\View\View;
 
-class HomeController extends Controller
+/**
+ * Class HomeController
+ * @package App\Http\Controllers
+ */
+final class HomeController extends Controller
 {
     /**
      * @var SaveArrayLog
@@ -25,12 +30,11 @@ class HomeController extends Controller
 
     }
 
+
     /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return View
      */
-    public function index(HttpSender $sender)
+    public function __invoke(HttpSender $sender): View
     {
         return view('home');
     }

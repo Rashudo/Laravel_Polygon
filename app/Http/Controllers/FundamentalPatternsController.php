@@ -1,15 +1,26 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
 
 use App\DesignPatterns\Fundamental\Delegation\AppMessenger;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 
-class FundamentalPatternsController
+/**
+ * Class FundamentalPatternsController
+ * @package App\Http\Controllers
+ */
+final class FundamentalPatternsController extends Controller
 {
 
-    public function delegationFabric()
+    /**
+     * @return Factory|View|Application
+     */
+    public function delegationFabric(): Factory|View|Application
     {
         $model = new AppMessenger();
         $model
