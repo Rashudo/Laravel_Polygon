@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\DesignPatterns\Creational\SimpleFactory;
 
@@ -7,10 +8,38 @@ namespace App\DesignPatterns\Creational\SimpleFactory;
 use App\DesignPatterns\Fundamental\Delegation\Messengers\EmailMessenger;
 use App\DesignPatterns\Fundamental\Delegation\Messengers\SmsMessenger;
 
+/**
+ * Class SimpleFactoryModel
+ * @package App\DesignPatterns\Creational\SimpleFactory
+ */
 class SimpleFactoryModel
 {
 
-    public function build(string $type = 'email')
+    /**
+     * @return string
+     */
+    public static function getName(): string
+    {
+        return 'Простая фабрика';
+    }
+
+    /**
+     * @return string
+     */
+    public static function getDescription(): string
+    {
+        return '
+            То же самое, что и статическая фабрика, только не статическая.<br />
+            Не путать с общим определением фабрики.<br /><br />
+            Создается экземпляр класса какой-то фабрики, у неё есть метод build, в котором есть switch..case директива, которая создает как-то сложно какие-то классы и вызывает их экземпляр.
+            ';
+    }
+
+    /**
+     * @param string $type
+     * @return EmailMessenger|string|SmsMessenger
+     */
+    public function build(string $type = 'email'): EmailMessenger|string|SmsMessenger
     {
         $messenger = '';
         switch ($type) {
@@ -31,19 +60,5 @@ class SimpleFactoryModel
         }
 
         return $messenger;
-    }
-
-    public static function getName()
-    {
-        return 'Простая фабрика';
-    }
-
-    public static function getDescription()
-    {
-        return '
-            То же самое, что и статическая фабрика, только не статическая.<br />
-            Не путать с общим определением фабрики.<br /><br />
-            Создается экземпляр класса какой-то фабрики, у неё есть метод build, в котором есть switch..case директива, которая создает как-то сложно какие-то классы и вызывает их экземпляр.
-            ';
     }
 }
