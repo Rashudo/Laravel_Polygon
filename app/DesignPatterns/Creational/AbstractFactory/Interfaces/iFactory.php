@@ -3,13 +3,25 @@
 
 namespace App\DesignPatterns\Creational\AbstractFactory\Interfaces;
 
-
+/**
+ * Interface iFactory
+ * @package App\DesignPatterns\Creational\AbstractFactory\Interfaces
+ */
 interface iFactory
 {
 
-    public function setDoor();
+    /**
+     * @return void
+     */
+    public function setDoor(): void;
 
-    public function setMaster();
+    /**
+     * @return void
+     */
+    public function setMaster(): void;
 
-    public function getDescription();
+    /**
+     * @return string
+     */
+    public function getDescription(): string;
 }

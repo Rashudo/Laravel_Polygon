@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\DesignPatterns\Creational\AbstractFactory;
 
@@ -8,7 +9,11 @@ use App\DesignPatterns\Creational\AbstractFactory\Factories\IronDoorFactory;
 use App\DesignPatterns\Creational\AbstractFactory\Factories\WoodenDoorFactory;
 use App\DesignPatterns\Creational\AbstractFactory\Interfaces\iFactory;
 
-class AbstractFactoryModel
+/**
+ * Class AbstractFactoryModel
+ * @package App\DesignPatterns\Creational\AbstractFactory
+ */
+final class AbstractFactoryModel
 {
 
     /**
@@ -30,12 +35,12 @@ class AbstractFactoryModel
         return $fabric;
     }
 
-    public function getName()
+    public function getName(): string
     {
         return 'Абстрактная фабрика (иначе Инструментарий)';
     }
 
-    public function getDescription()
+    public function getDescription(): string
     {
         return '
         - Есть переключатель, которому мы скармливаем название <b>группы</b> классов, например, есть фабрика, которая производит элементы интерфейса. Ей можно скормить <i>bootstrap</i>, а можно скормить <i>handmade</i>, в зависимости от этого будет рисоваться в разном стиле.<br />

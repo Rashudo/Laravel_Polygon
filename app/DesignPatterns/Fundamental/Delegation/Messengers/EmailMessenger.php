@@ -1,12 +1,16 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\DesignPatterns\Fundamental\Delegation\Messengers;
 
 
-class EmailMessenger  extends AbstractMessenger
+/**
+ * Class EmailMessenger
+ * @package App\DesignPatterns\Fundamental\Delegation\Messengers
+ */
+class EmailMessenger extends AbstractMessenger
 {
-
     /**
      * @return bool
      */

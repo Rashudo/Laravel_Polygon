@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\DesignPatterns\Creational\AbstractFactory\Factories;
 
@@ -7,26 +8,43 @@ namespace App\DesignPatterns\Creational\AbstractFactory\Factories;
 use App\DesignPatterns\Creational\AbstractFactory\Classes\WoodenDoor;
 use App\DesignPatterns\Creational\AbstractFactory\Interfaces\iFactory;
 
-class IronDoorFactory implements iFactory
+/**
+ * Class WoodenDoorFactory
+ * @package App\DesignPatterns\Creational\AbstractFactory\Factories
+ */
+final class IronDoorFactory implements iFactory
 {
-    public $master;
+    /**
+     * @var string
+     */
+    public string $master;
 
-    public $door;
+    /**
+     * @var string
+     */
+    public string $door;
 
 
-    public function setDoor()
+    /**
+     * @return void
+     */
+    public function setDoor(): void
     {
         $this->door = (new WoodenDoor())->buildDoor();
     }
 
-    public function setMaster()
+    /**
+     * @return void
+     */
+    public function setMaster(): void
     {
-
-
         $this->master = 'Мастер Железной Двери';
     }
 
-    public function getDescription()
+    /**
+     * @return string
+     */
+    public function getDescription(): string
     {
         $return = 'Установленная дверь: ' . $this->door . '. ';
         $return .= 'Мастер: ' . $this->master . '.';

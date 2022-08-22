@@ -1,28 +1,33 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\DesignPatterns\Fundamental\Delegation\Messengers;
 
 
 use App\DesignPatterns\Fundamental\Delegation\Interfaces\MessengerInterface;
 
+/**
+ * Class AbstractMessenger
+ * @package App\DesignPatterns\Fundamental\Delegation\Messengers
+ */
 abstract class AbstractMessenger implements MessengerInterface
 {
 
     /**
      * @var string
      */
-    protected $sender;
+    protected string $sender;
 
     /**
      * @var string
      */
-    protected $recipient;
+    protected string $recipient;
 
     /**
      * @var string
      */
-    protected $message;
+    protected string $message;
 
     /**
      * @param $value

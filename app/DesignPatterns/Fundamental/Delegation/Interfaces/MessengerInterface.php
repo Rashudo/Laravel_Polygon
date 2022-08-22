@@ -7,11 +7,23 @@ namespace App\DesignPatterns\Fundamental\Delegation\Interfaces;
 interface MessengerInterface
 {
 
+    /**
+     * @param $value
+     * @return MessengerInterface
+     */
     public function setSender($value): MessengerInterface;
 
+    /**
+     * @param $value
+     * @return MessengerInterface
+     */
     public function setRecipient($value): MessengerInterface;
 
-    public function setMessage($message): MessengerInterface;
+    /**
+     * @param $value
+     * @return MessengerInterface
+     */
+    public function setMessage($value): MessengerInterface;
 
     /**
      * @return bool
