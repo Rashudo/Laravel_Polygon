@@ -1,30 +1,33 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\DesignPatterns\Creational\Prototye;
 
 
 use Carbon\Carbon;
 
+/**
+ * Class Order
+ * @package App\DesignPatterns\Creational\Prototye
+ */
 class Order
 {
-
-    public $id;
-
     /**
-     * @var Carbon
+     * @param int $id
+     * @param Carbon $deliveryDt
+     * @param Client $client
      */
-    public $deliveryDt;
-
-    public $client;
-
-    public function __construct($id, Carbon $deliveryDt, Client $client)
-    {
-        $this->id = $id;
-        $this->deliveryDt = $deliveryDt;
-        $this->client = $client;
+    public function __construct(
+        public int $id,
+        public Carbon $deliveryDt,
+        public Client $client
+    ) {
     }
 
+    /**
+     * @return void
+     */
     public function __clone()
     {
         $this->id = $this->id + 1;
@@ -34,6 +37,9 @@ class Order
     }
 
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return $this->deliveryDt->toDateString();

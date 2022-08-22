@@ -1,32 +1,31 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\DesignPatterns\Creational\Prototye;
 
-
+/**
+ * Class Client
+ * @package App\DesignPatterns\Creational\Prototye
+ */
 class Client
 {
-    public $id;
-
-    public $name;
-
     /**
      * @var array Order
      */
-    public $order = [];
+    public array $order = [];
 
     /**
-     * Client constructor.
-     * @param $id
-     * @param $name
+     * @param int $id
+     * @param string $name
      */
-    public function __construct($id, $name)
-    {
-        $this->id = $id;
-        $this->name = $name;
+    public function __construct(
+        public int $id,
+        public string $name
+    ) {
     }
 
-    public function addOrder(Order $order)
+    public function addOrder(Order $order): void
     {
         $this->order[] = $order;
     }
