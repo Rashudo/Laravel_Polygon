@@ -22,7 +22,7 @@ final class WoodenDoorFactory implements iFactory
     /**
      * @return void
      */
-    public function setDoor()
+    public function setDoor(): void
     {
         $this->door = (new IronDoor())->buildDoor();
     }
@@ -30,7 +30,7 @@ final class WoodenDoorFactory implements iFactory
     /**
      * @return void
      */
-    public function setMaster()
+    public function setMaster(): void
     {
         $this->master = 'Мастер Деревянной Двери';
     }
@@ -38,7 +38,7 @@ final class WoodenDoorFactory implements iFactory
     /**
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         $return = 'Установленная дверь: ' . $this->door . '. ';
         $return .= 'Мастер: ' . $this->master . '.';
