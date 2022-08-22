@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\SolidPrinciples\D\Example;
 
@@ -15,8 +16,8 @@ class MongoConnection implements ConnectionInterface
     /**
      * mongo connection
      */
-    public function connect()
+    public function connect(): void
     {
-        //coneect to mongo
+        //connect to mongo
     }
 }

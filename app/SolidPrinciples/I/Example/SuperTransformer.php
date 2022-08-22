@@ -14,25 +14,25 @@ class SuperTransformer implements SuperTransformerInterface
 {
 
     /**
-     *
+     * @return void
      */
-    public function toCar()
+    public function toCar(): void
     {
         // TODO: Implement toCar() method.
     }
 
     /**
-     *
+     * @return void
      */
-    public function toPlane()
+    public function toPlane(): void
     {
         // TODO: Implement toPlane() method.
     }
 
     /**
-     *
+     * @return void
      */
-    public function toShip()
+    public function toShip(): void
     {
         // TODO: Implement toShip() method.
     }

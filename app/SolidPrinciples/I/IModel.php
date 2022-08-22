@@ -1,8 +1,8 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\SolidPrinciples\I;
-
 
 use App\SolidPrinciples\I\Example\CarTransformer;
 use App\SolidPrinciples\I\Example\SuperTransformer;
@@ -16,7 +16,7 @@ class IModel
     /**
      * @return string
      */
-    public static function getName()
+    public static function getName(): string
     {
         return 'Принцип разделения интерфейса (Interface Segregation Principle)';
     }
@@ -24,9 +24,8 @@ class IModel
     /**
      * @return string
      */
-    public static function getDescription()
+    public static function getDescription(): string
     {
-
         return '
         <b>Нельзя заставлять клиента реализовать интерфейс, которым он не пользуется.</b><br />
 
@@ -36,11 +35,12 @@ class IModel
     /**
      * @return array
      */
-    public function run()
+    public function run(): array
     {
-
-        $superTransformer = new SuperTransformer(); // Класс который реализует три метода интерфейса SuperTransformerInterface
-        $carTransformer = new CarTransformer(); //Неправильно заставлять этот класс реализовывать интерфейс SuperTransformerInterface
+        $superTransformer = new SuperTransformer(
+        ); // Класс который реализует три метода интерфейса SuperTransformerInterface
+        $carTransformer = new CarTransformer(
+        ); //Неправильно заставлять этот класс реализовывать интерфейс SuperTransformerInterface
         //потому что там будут пустые методы:
         //    public function toPlane();
         //    public function toShip();

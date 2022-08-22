@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\SolidPrinciples\S;
 
@@ -24,9 +25,8 @@ class SModel
     /**
      * @return string
      */
-    public static function getDescription()
+    public static function getDescription(): string
     {
-
         return '
         <b>Существует лишь одна причина, приводящая к изменению класса.</b><br />
         Один класс должен решать только какую-то одну задачу. Он может иметь несколько методов, но они должны использоваться лишь для решения общей задачи. Все методы и свойства должны служить одной цели. Если класс имеет несколько назначений, его нужно разделить на отдельные классы.';
@@ -35,7 +35,7 @@ class SModel
     /**
      * @return array
      */
-    public function run()
+    public function run(): array
     {
         $logger = new ClassLogger();
         $product = new Product($logger);

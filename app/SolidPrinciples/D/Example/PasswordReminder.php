@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\SolidPrinciples\D\Example;
 
@@ -16,7 +17,7 @@ class PasswordReminder
     /**
      * @param MySQLConnection $connection
      */
-    public function wrongRun(MySQLConnection $connection)
+    public function wrongRun(MySQLConnection $connection): void
     {
         //
     }
@@ -24,7 +25,7 @@ class PasswordReminder
     /**
      * @param ConnectionInterface $connection
      */
-    public function rightRun(ConnectionInterface $connection)
+    public function rightRun(ConnectionInterface $connection): void
     {
         //
     }

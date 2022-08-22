@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\SolidPrinciples\O\Example;
 
@@ -7,17 +8,15 @@ namespace App\SolidPrinciples\O\Example;
  * Class FileLogger
  * @package App\SolidPrinciples\O\Example
  */
-class FileLogger extends ClassLogger
+final class FileLogger extends ClassLogger
 {
 
     /**
      * @param string $string
      */
-    public function log(string $string)
+    public function log(string $string): void
     {
-        //Нарушается второй принцип sOlid
-        //Так как может понадобиться запись в файл, например.
-        //Придется менять это.
+        //Теперь второй принцип не нарушается
         $this->saveToFile($string);
     }
 
@@ -26,6 +25,6 @@ class FileLogger extends ClassLogger
      */
     private function saveToFile(string $string)
     {
-        //save logs to db
+        //save logs to file
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\SolidPrinciples\L\Example;
 
@@ -9,19 +10,12 @@ namespace App\SolidPrinciples\L\Example;
  */
 class BirdMove
 {
-
-    /**
-     * @var Bird
-     */
-    private $bird;
-
     /**
      * BirdMove constructor.
      * @param Bird $bird
      */
-    public function __construct(Bird $bird)
+    public function __construct(private Bird $bird)
     {
-        $this->bird = $bird;
     }
 
     /**

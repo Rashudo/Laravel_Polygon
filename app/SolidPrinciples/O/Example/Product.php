@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\SolidPrinciples\O\Example;
 
@@ -12,24 +13,19 @@ use Exception;
  */
 class Product
 {
-    /**
-     * @var ClassLogger
-     */
-    private $logger;
 
     /**
      * Product constructor.
      * @param ClassLogger $logger
      */
-    public function __construct(ClassLogger $logger)
+    public function __construct(private ClassLogger $logger)
     {
-        $this->logger = $logger;
     }
 
     /**
-     *
+     * @return void
      */
-    public function setPrice()
+    public function setPrice(): void
     {
         try {
             //set price

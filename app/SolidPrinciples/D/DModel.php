@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\SolidPrinciples\D;
 
@@ -17,7 +18,7 @@ class DModel
     /**
      * @return string
      */
-    public static function getName()
+    public static function getName(): string
     {
         return 'Принцип инверсии зависимостей (Dependency Inversion Principle)';
     }
@@ -25,9 +26,8 @@ class DModel
     /**
      * @return string
      */
-    public static function getDescription()
+    public static function getDescription(): string
     {
-
         return '
         <b>Высокоуровневые модули не должны зависеть от низкоуровневых. Оба вида модулей должны зависеть от абстракций.<br />
             Абстракции не должны зависеть от подробностей. Подробности должны зависеть от абстракций.</b><br />
@@ -38,14 +38,18 @@ class DModel
     /**
      * @return array
      */
-    public function run()
+    public function run(): array
     {
         $dbConnection = new MySQLConnection();
         $mongoConnection = new MongoConnection();
         $passwordReminder = new PasswordReminder();
-        $passwordReminder->wrongRun($dbConnection); //нарушается пятый принцип soliD высокоуровневый класс зависит от конкретной реализации.
+        $passwordReminder->wrongRun(
+            $dbConnection
+        ); //нарушается пятый принцип soliD высокоуровневый класс зависит от конкретной реализации.
         //если мы захотим поменять подключение, тут придется всё менять.
-        $passwordReminder->rightRun($mongoConnection); // тут не нарушается, rightRun зависит от абстракции (интерфейса), а не от реализации
+        $passwordReminder->rightRun(
+            $mongoConnection
+        ); // тут не нарушается, rightRun зависит от абстракции (интерфейса), а не от реализации
         return ['Смотри ' . __NAMESPACE__];
     }
 }

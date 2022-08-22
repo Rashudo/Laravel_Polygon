@@ -1,7 +1,10 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\SolidPrinciples\S\Example;
+
+use Exception;
 
 /**
  * Class Product
@@ -10,27 +13,22 @@ namespace App\SolidPrinciples\S\Example;
 class Product
 {
     /**
-     * @var ClassLogger
-     */
-    private $logger;
-
-    /**
      * Product constructor.
      * @param ClassLogger $logger
      */
-    public function __construct(ClassLogger $logger)
-    {
-        $this->logger = $logger;
+    public function __construct(
+        private ClassLogger $logger
+    ) {
     }
 
     /**
-     *
+     * @return void
      */
-    public function setPrice()
+    public function setPrice(): void
     {
         try {
             //set price
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             $this->logError($exception->getMessage()); //нарушает первый принцип Solid
             $this->logger->log($exception->getMessage()); //Не нарушает первый принцип Solid
         }

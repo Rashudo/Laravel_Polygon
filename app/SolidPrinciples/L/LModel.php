@@ -1,20 +1,24 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\SolidPrinciples\L;
-
 
 use App\SolidPrinciples\L\Example\Bird;
 use App\SolidPrinciples\L\Example\BirdMove;
 use App\SolidPrinciples\L\Example\Duck;
 
+/**
+ * Class LModel
+ * @package App\SolidPrinciples\L
+ */
 class LModel
 {
 
     /**
      * @return string
      */
-    public static function getName()
+    public static function getName(): string
     {
         return 'Принцип подстановки Барбары Лисков (Liskov Substitution Principle)';
     }
@@ -22,7 +26,7 @@ class LModel
     /**
      * @return string
      */
-    public static function getDescription()
+    public static function getDescription(): string
     {
 
         return '
@@ -34,7 +38,7 @@ class LModel
     /**
      * @return array
      */
-    public function run()
+    public function run(): array
     {
 
         $bird = new Bird();

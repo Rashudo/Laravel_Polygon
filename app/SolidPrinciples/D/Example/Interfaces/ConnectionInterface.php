@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\SolidPrinciples\D\Example\Interfaces;
 
 /**
@@ -11,7 +10,7 @@ interface ConnectionInterface
 {
 
     /**
-     * @return mixed
+     * @return void
      */
-    public function connect();
+    public function connect(): void;
 }

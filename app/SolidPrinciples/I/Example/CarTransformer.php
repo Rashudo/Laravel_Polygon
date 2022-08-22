@@ -1,11 +1,11 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\SolidPrinciples\I\Example;
 
 
 use App\SolidPrinciples\I\Example\Interfaces\CarTransformerInterface;
-use App\SolidPrinciples\I\Example\Interfaces\SuperTransformerInterface;
 
 /**
  * Class CarTransformer
@@ -15,9 +15,9 @@ class CarTransformer implements CarTransformerInterface
 {
 
     /**
-     *
+     * @return void
      */
-    public function toCar()
+    public function toCar(): void
     {
         // TODO: Implement toCar() method.
     }

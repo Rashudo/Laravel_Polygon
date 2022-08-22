@@ -1,18 +1,23 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\SolidPrinciples\O;
 
 
 use App\SolidPrinciples\O\Example\{ClassLogger, FileLogger, Product};
 
+/**
+ * Class OModel
+ * @package App\SolidPrinciples\O
+ */
 class OModel
 {
 
     /**
      * @return string
      */
-    public static function getName()
+    public static function getName(): string
     {
         return 'Принцип открытости/закрытости (Open-closed Principle)';
     }
@@ -20,9 +25,8 @@ class OModel
     /**
      * @return string
      */
-    public static function getDescription()
+    public static function getDescription(): string
     {
-
         return '
         <b>Программные сущности должны быть открыты для расширения, но закрыты для модификации.</b><br />
 
@@ -32,7 +36,7 @@ class OModel
     /**
      * @return array
      */
-    public function run()
+    public function run(): array
     {
         $logger = new ClassLogger();
         //ClassLogger реализует какую-то логику записи, скажем в БД, а мы хотим для Продукта писать логи в файл.

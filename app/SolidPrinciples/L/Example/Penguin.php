@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\SolidPrinciples\L\Example;
 
@@ -7,7 +8,7 @@ namespace App\SolidPrinciples\L\Example;
  * Class Penguin
  * @package App\SolidPrinciples\L\Example
  */
-class Penguin extends Bird
+final class Penguin extends Bird
 {
 
     public function fly(): string

@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\SolidPrinciples\L\Example;
 
@@ -7,7 +8,7 @@ namespace App\SolidPrinciples\L\Example;
  * Class Duck
  * @package App\SolidPrinciples\L\Example
  */
-class Duck extends Bird
+final class Duck extends Bird
 {
     /**
      * @return int
