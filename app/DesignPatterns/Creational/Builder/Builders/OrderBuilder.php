@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\DesignPatterns\Creational\Builder\Builders;
 
@@ -7,12 +8,16 @@ namespace App\DesignPatterns\Creational\Builder\Builders;
 use App\DesignPatterns\Creational\Builder\Classes\Order;
 use App\DesignPatterns\Creational\Builder\Interfaces\OrderBuilderInterface;
 
-class OrderBuilder implements OrderBuilderInterface
+/**
+ * Class OrderBuilder
+ * @package App\DesignPatterns\Creational\Builder\Builders
+ */
+final class OrderBuilder implements OrderBuilderInterface
 {
     /**
      * @var Order
      */
-    private $order;
+    private Order $order;
 
     /**
      * OrderBuilder constructor.
@@ -23,6 +28,9 @@ class OrderBuilder implements OrderBuilderInterface
     }
 
 
+    /**
+     * @return OrderBuilderInterface
+     */
     public function create(): OrderBuilderInterface
     {
         $this->order = new Order();
@@ -30,6 +38,10 @@ class OrderBuilder implements OrderBuilderInterface
         return $this;
     }
 
+    /**
+     * @param $source
+     * @return OrderBuilderInterface
+     */
     public function setSource($source): OrderBuilderInterface
     {
         $this->order->source = $source;
@@ -37,6 +49,10 @@ class OrderBuilder implements OrderBuilderInterface
         return $this;
     }
 
+    /**
+     * @param $sum
+     * @return OrderBuilderInterface
+     */
     public function setSum($sum): OrderBuilderInterface
     {
         $this->order->sum = $sum;
@@ -44,6 +60,9 @@ class OrderBuilder implements OrderBuilderInterface
         return $this;
     }
 
+    /**
+     * @return Order
+     */
     public function getOrder(): Order
     {
         $result = $this->order; //Мы должны вернуть созданный объект

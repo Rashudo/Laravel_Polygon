@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\DesignPatterns\Creational\Builder;
 
@@ -7,10 +8,17 @@ namespace App\DesignPatterns\Creational\Builder;
 use App\DesignPatterns\Creational\Builder\Builders\OrderBuilder;
 use App\DesignPatterns\Creational\Builder\Builders\OrderManager;
 
+/**
+ * Class BuilderClass
+ * @package App\DesignPatterns\Creational\Builder
+ */
 class BuilderClass
 {
 
-    public static function builderHandler()
+    /**
+     * @return string
+     */
+    public static function builderHandler(): string
     {
         $result = (new OrderBuilder())
             ->setSource('site')
@@ -19,8 +27,10 @@ class BuilderClass
         return 'Создано через билдер, объект Order, с source = ' . $result->source . ' и суммой = ' . $result->sum;
     }
 
-
-    public static function builderManager()
+    /**
+     * @return string
+     */
+    public static function builderManager(): string
     {
         $result = (new OrderManager(new OrderBuilder()))
             ->createOrderFromApi();
@@ -28,12 +38,18 @@ class BuilderClass
     }
 
 
-    public static function getName()
+    /**
+     * @return string
+     */
+    public static function getName(): string
     {
         return 'Строитель';
     }
 
-    public static function getDescription()
+    /**
+     * @return string
+     */
+    public static function getDescription(): string
     {
         return '<b>Строитель</b> -
             класс которому доверили создавать экземпляр другого класса. Это может быть связано с тем, что класс создается как-то сложно, инициируется ряд свойств; в одном месте этот класс создается с одним набром логики, в другом - с другим.<br />
