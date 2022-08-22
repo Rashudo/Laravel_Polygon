@@ -1,9 +1,13 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\DesignPatterns\Creational\Singleton\Traits;
 
-
+/**
+ * Trait SingletonTrait
+ * @package App\DesignPatterns\Creational\Singleton\Traits
+ */
 trait SingletonTrait
 {
 
@@ -18,13 +22,12 @@ trait SingletonTrait
      */
     public function __construct()
     {
-
     }
 
     /**
      * @return static
      */
-    public static function getInstance()
+    public static function getInstance(): static
     {
         return static::$_instance ?? (static::$_instance = new static());
 //        if (null === self::$_instance) {
@@ -39,7 +42,6 @@ trait SingletonTrait
      */
     public function __clone()
     {
-
     }
 
     /**
@@ -47,6 +49,5 @@ trait SingletonTrait
      */
     public function __wakeup()
     {
-
     }
 }
