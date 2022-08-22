@@ -1,9 +1,13 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\DesignPatterns\Creational\Multiton\Traits;
 
-
+/**
+ * Trait MultitonTrait
+ * @package App\DesignPatterns\Creational\Multiton\Traits
+ */
 trait MultitonTrait
 {
 
@@ -16,7 +20,7 @@ trait MultitonTrait
     /**
      * @var string
      */
-    public $key;
+    public string $key;
 
 
     /**
@@ -25,13 +29,12 @@ trait MultitonTrait
      */
     public function __construct()
     {
-
     }
 
     /**
      * @return static
      */
-    public static function getInstance(string $key)
+    public static function getInstance(string $key): static
     {
         if (!isset(static::$_instance[$key])) {
             static::$_instance[$key] = new static();
@@ -40,12 +43,16 @@ trait MultitonTrait
         return static::$_instance[$key];
     }
 
+    public function setKey(&$key): void
+    {
+        $this->key = $key;
+    }
+
     /**
      * forbid clone
      */
     public function __clone()
     {
-
     }
 
     /**
@@ -53,12 +60,6 @@ trait MultitonTrait
      */
     public function __wakeup()
     {
-
-    }
-
-    public function setKey(&$key)
-    {
-        $this->key = $key;
     }
 
 }
