@@ -1,43 +1,38 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\DesignPatterns\Creational\LazyInitialization;
 
 
 use App\Models\Order;
 
+/**
+ * Class LazyInitialization
+ * @package App\DesignPatterns\Creational\LazyInitialization
+ */
 class LazyInitialization
 {
 
-    public $order;
+    public Order $order;
 
     public function __construct()
     {
         //$this->order = new Order(); <- так лучше не делать, если не во всех методах нужен order
     }
 
-
     /**
-     * Метод проверяет, есть ли Order, если нет - создает.
-     *
-     * @return Order
+     * @return string
      */
-    public function getOrder()
-    {
-        if (is_null($this->order)) {
-            $this->order = new Order();
-        }
-        return $this->order;
-    }
-
-
-
-    public static function getName()
+    public static function getName(): string
     {
         return 'Ленивая инициализация';
     }
 
-    public static function getDescription()
+    /**
+     * @return string
+     */
+    public static function getDescription(): string
     {
         return '<b>Отложенная (ленивая) инициализация</b> -
              приём в программировании, когда некоторая ресурсоёмкая операция (создание объекта, вычисление значения) выполняется непосредственно перед тем, как будет использован её результат. Таким образом, инициализация выполняется «по требованию», а не заблаговременно.<br />
@@ -64,6 +59,19 @@ class LazyInitialization
              Или так: <br />
              ->with(["catalogs:id, name")
             ';
+    }
+
+    /**
+     * Метод проверяет, есть ли Order, если нет - создает.
+     *
+     * @return Order
+     */
+    public function getOrder(): Order
+    {
+        if (!isset($this->order)) {
+            $this->order = new Order();
+        }
+        return $this->order;
     }
 
 }
