@@ -19,7 +19,7 @@ class AppMessenger implements MessengerInterface
     /**
      * @var MessengerInterface
      */
-    private $messenger;
+    private MessengerInterface $messenger;
 
     public function __construct()
     {

@@ -1,15 +1,24 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\DesignPatterns\Creational\StaticFactory;
 
 
 use App\DesignPatterns\Fundamental\Delegation\AppMessenger;
 
+/**
+ * Class StaticFactoryModel
+ * @package App\DesignPatterns\Creational\StaticFactory
+ */
 class StaticFactoryModel
 {
 
-    public static function build(string $type = 'email')
+    /**
+     * @param string $type
+     * @return AppMessenger
+     */
+    public static function build(string $type = 'email'): AppMessenger
     {
         $messenger = new AppMessenger();
         $sender = '';
@@ -32,17 +41,23 @@ class StaticFactoryModel
         return $messenger;
     }
 
-        public static function getName()
-        {
-            return 'Статическая фабрика';
-        }
+    /**
+     * @return string
+     */
+    public static function getName(): string
+    {
+        return 'Статическая фабрика';
+    }
 
-        public static function getDescription()
-        {
-            return '
+    /**
+     * @return string
+     */
+    public static function getDescription(): string
+    {
+        return '
             То же самое, что и абстрактная фабрика, только не создается экземпляр фабрики, а вызывается статический метод build.<br />
             Также в отличии от Абстрактной фабрики, статическая не требует привязки к интерфейсу. То есть фабрика не обязательно вернет объект одного типа, можно разные.<br />
             StaticFactoryModel::build(сюда идет название класса), создать класс отправки сообщений на почту или по смс.
             ';
-        }
+    }
 }
