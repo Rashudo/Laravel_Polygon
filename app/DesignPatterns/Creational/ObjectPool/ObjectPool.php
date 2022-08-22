@@ -1,12 +1,17 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\DesignPatterns\Creational\ObjectPool;
 
 
-use App\DesignPatterns\Creational\Singleton\Traits\SingletonTrait;
 use App\DesignPatterns\Creational\ObjectPool\Interfaces\ObjectPoolableInterface;
+use App\DesignPatterns\Creational\Singleton\Traits\SingletonTrait;
 
+/**
+ * Class ObjectPool
+ * @package App\DesignPatterns\Creational\ObjectPool
+ */
 class ObjectPool
 {
     use SingletonTrait;
@@ -14,12 +19,12 @@ class ObjectPool
     /**
      * @var array
      */
-    private $clone = [];
+    private array $cloneObject = [];
 
     /**
      * @var array
      */
-    private $prototypes = [];
+    private array $prototypes = [];
 
     /**
      * Добавляем объект в пул. Он становится неизменяемым прототипом
@@ -27,12 +32,21 @@ class ObjectPool
      * @param ObjectPoolableInterface $object
      * @return $this
      */
-    public function addObject(ObjectPoolableInterface $object)
+    public function addObject(ObjectPoolableInterface $object): static
     {
         $key = $this->getObjKey($object);
         $this->prototypes[$key] = $object;
 
         return $this;
+    }
+
+    /**
+     * @param $object
+     * @return string
+     */
+    private function getObjKey(&$object): string
+    {
+        return (is_object($object)) ? get_class($object) : strval($object);
     }
 
     /**
@@ -44,11 +58,11 @@ class ObjectPool
      * @param string $className
      * @return bool|mixed|null
      */
-    public function getObject(string $className)
+    public function getObject(string $className): mixed
     {
         $key = $this->getObjKey($className);
 
-        if (isset($this->clone[$key])) {
+        if (isset($this->cloneObject[$key])) {
             return false;
         }
 
@@ -56,9 +70,9 @@ class ObjectPool
             return null;
         }
 
-        $this->clone[$key] = clone $this->prototypes[$key];
+        $this->cloneObject[$key] = clone $this->prototypes[$key];
 
-        return $this->clone[$key];
+        return $this->cloneObject[$key];
     }
 
     /**
@@ -69,16 +83,8 @@ class ObjectPool
     public function release(ObjectPoolableInterface $object): void
     {
         $key = $this->getObjKey($object);
-        unset($this->clone[$key]);
-        $object = null;
+        unset($this->cloneObject[$key]);
     }
-
-
-    private function getObjKey(&$object)
-    {
-        return (is_object($object)) ? get_class($object) : strval($object);
-    }
-
 
 
 }
