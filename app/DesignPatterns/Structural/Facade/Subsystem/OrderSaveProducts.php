@@ -1,10 +1,13 @@
 <?php
-
+declare(strict_types=1);
 
 namespace App\DesignPatterns\Structural\Facade\Subsystem;
 
-
-class OrderSaveProducts  extends AbstractOrderSave
+/**
+ * Class AbstractOrderSave
+ * @package App\DesignPatterns\Structural\Facade\Subsystem
+ */
+final class OrderSaveProducts  extends AbstractOrderSave
 {
 
 }

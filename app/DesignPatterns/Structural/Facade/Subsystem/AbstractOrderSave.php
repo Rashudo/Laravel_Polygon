@@ -1,30 +1,31 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\DesignPatterns\Structural\Facade\Subsystem;
 
-
 use App\Models\Order;
 
-class AbstractOrderSave
+/**
+ * Class AbstractOrderSave
+ * @package App\DesignPatterns\Structural\Facade\Subsystem
+ */
+abstract class AbstractOrderSave
 {
     /**
-     * @var Order
+     * @param Order $order
+     * @param array $data
      */
-    public $order;
-
-    /**
-     * @var array
-     */
-    public $data;
-
-    public function __construct(Order &$order, array &$data)
-    {
-        $this->order = $order;
-        $this->data = $data;
+    public function __construct(
+        public Order $order,
+        public array $data
+    ) {
     }
 
-    public function run()
+    /**
+     * @return string
+     */
+    public function run(): string
     {
         return static::class;
     }

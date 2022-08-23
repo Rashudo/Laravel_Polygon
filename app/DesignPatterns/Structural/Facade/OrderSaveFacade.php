@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\DesignPatterns\Structural\Facade;
 
@@ -10,14 +11,24 @@ use App\DesignPatterns\Structural\Facade\Subsystem\OrderSaveProducts;
 use App\DesignPatterns\Structural\Facade\Subsystem\OrderSaveUser;
 use App\Models\Order;
 
+/**
+ * Class OrderSaveFacade
+ * @package App\DesignPatterns\Structural\Facade
+ */
 class OrderSaveFacade implements OrderSaveInterface
 {
-    public static function getName()
+    /**
+     * @return string
+     */
+    public static function getName(): string
     {
         return 'Фасад';
     }
 
-    public static function getDescription()
+    /**
+     * @return string
+     */
+    public static function getDescription(): string
     {
         return '
         <b>Фасад</b> — это структурный паттерн проектирования, который предоставляет простой интерфейс к сложной системе классов, библиотеке или фреймворку.<br />
@@ -28,7 +39,12 @@ class OrderSaveFacade implements OrderSaveInterface
         ';
     }
 
-    public function save(Order &$order, array &$data): array
+    /**
+     * @param Order $order
+     * @param array $data
+     * @return array
+     */
+    public function save(Order $order, array $data): array
     {
         $return = [];
 
