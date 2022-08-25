@@ -24,12 +24,12 @@ final class LibsAdapter implements SelfWrittenInterface
         $this->libObject = new ThirdPartyLib();
     }
 
-    public static function getName()
+    public static function getName(): string
     {
         return 'Адаптер';
     }
 
-    public static function getDescription()
+    public static function getDescription(): string
     {
         return '
         <b>Адаптер</b> —  это структурный паттерн проектирования, который позволяет объектам с несовместимыми интерфейсами работать вместе.<br />
@@ -50,16 +50,28 @@ final class LibsAdapter implements SelfWrittenInterface
         ';
     }
 
+    /**
+     * @return string
+     */
     public function method_one(): string
     {
         return $this->libObject->party_one();
     }
 
+    /**
+     * @return string
+     */
     public function method_two(): string
     {
         return $this->libObject->party_two();
     }
 
+    /**
+     * @param $name
+     * @param $arguments
+     * @return mixed
+     * @throws Exception
+     */
     public function __call($name, $arguments)
     {
         if (method_exists($this->libObject, $name)) {

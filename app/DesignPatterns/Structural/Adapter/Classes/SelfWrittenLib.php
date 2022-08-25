@@ -1,11 +1,16 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\DesignPatterns\Structural\Adapter\Classes;
 
 use App\DesignPatterns\Structural\Adapter\Interfaces\SelfWrittenInterface;
 
-class SelfWrittenLib implements SelfWrittenInterface
+/**
+ * Class SelfWrittenLib
+ * @package App\DesignPatterns\Structural\Adapter\Classes
+ */
+final class SelfWrittenLib implements SelfWrittenInterface
 {
 
     /**
