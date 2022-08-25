@@ -1,14 +1,19 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\DesignPatterns\Structural\Composite\Classes;
 
 
 use App\DesignPatterns\Structural\Composite\Interfaces\iHavePrice;
 
-class Topping implements iHavePrice
+/**
+ * Class Item
+ * @package App\DesignPatterns\Structural\Composite\Classes
+ */
+final class Topping implements iHavePrice
 {
-    private $price = 0;
+    private int|float $price = 0;
 
     /**
      * Topping constructor.

@@ -1,19 +1,24 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\DesignPatterns\Structural\Composite\Classes;
 
 
 use App\DesignPatterns\Structural\Composite\Interfaces\iHavePrice;
 
-class Order implements iHavePrice
+/**
+ * Class Item
+ * @package App\DesignPatterns\Structural\Composite\Classes
+ */
+final class Order implements iHavePrice
 {
     /**
-     * @var array
+     * @var array|Item[]
      */
-    public $items = [];
+    public array $items = [];
 
-    public $price = 0;
+    public int $price = 0;
 
     /**
      * @param Item $item
