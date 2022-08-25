@@ -1,26 +1,35 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\DesignPatterns\Structural\Proxy\Models;
 
 
 use App\DesignPatterns\Structural\Proxy\Interfaces\iDb;
+use DB;
 
-class DBConnector implements iDb
+/**
+ * Class DBConnector
+ * @package App\DesignPatterns\Structural\Proxy\Models
+ */
+final class DBConnector implements iDb
 {
 
-    public $connection;
+    /**
+     * @var DB
+     */
+    public DB $connection;
 
     public function __construct()
     {
         //connect to db
-        $this->connection = new \DB();
+        $this->connection = new DB();
     }
 
     /**
-     *
+     * @return bool
      */
-    public function save()
+    public function save(): bool
     {
         //$this->connection->query();
         return true;
@@ -29,9 +38,9 @@ class DBConnector implements iDb
     /**
      * @return array
      */
-    public function get(): string
+    public function get(): array
     {
         //$this->connection->select('');
-        return 'BaseClass data';
+        return ['BaseClass data'];
     }
 }

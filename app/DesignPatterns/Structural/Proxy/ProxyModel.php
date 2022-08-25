@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\DesignPatterns\Structural\Proxy;
 
@@ -7,29 +8,25 @@ namespace App\DesignPatterns\Structural\Proxy;
 use App\DesignPatterns\Structural\Proxy\Models\DBConnector;
 use App\DesignPatterns\Structural\Proxy\Models\DbProxy;
 
-class ProxyModel
+/**
+ * Class ProxyModel
+ * @package App\DesignPatterns\Structural\Proxy
+ */
+final class ProxyModel
 {
 
     /**
-     * @return array
+     * @return string
      */
-    public function run(): array
-    {
-        $db = new DbProxy(new DBConnector());
-        $db->save();
-        $return['save_time'] = $db->time;
-        $return['get_first'] = $db->get();
-        $return['get_second'] = $db->get();
-        return $return;
-    }
-
-
-    public static function getName()
+    public static function getName(): string
     {
         return 'Заместитель';
     }
 
-    public static function getDescription()
+    /**
+     * @return string
+     */
+    public static function getDescription(): string
     {
         return '
         <b>Заместитель</b> (Proxy) — Заместитель — это структурный паттерн проектирования, который позволяет подставлять вместо реальных объектов специальные объекты-заменители. Эти объекты перехватывают вызовы к оригинальному объекту, позволяя сделать что-то до или после передачи вызова оригиналу.<br />
@@ -53,5 +50,18 @@ class ProxyModel
 
         </code>
         ';
+    }
+
+    /**
+     * @return array
+     */
+    public function run(): array
+    {
+        $db = new DbProxy(new DBConnector());
+        $db->save();
+        $return['save_time'] = $db->time;
+        $return['get_first'] = $db->get();
+        $return['get_second'] = $db->get();
+        return $return;
     }
 }

@@ -1,47 +1,58 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\DesignPatterns\Structural\Proxy\Models;
 
 
 use App\DesignPatterns\Structural\Proxy\Interfaces\iDb;
 
-class DbProxy implements iDb
+/**
+ * Class DBConnector
+ * @package App\DesignPatterns\Structural\Proxy\Models
+ */
+final class DbProxy implements iDb
 {
     /**
      * @var float
      */
-    public $time = 0;
-    /**
-     * @var iDb
-     */
-    private $object;
+    public float $time = 0;
+
     /**
      * @var array
      */
-    private $cached = [];
+    private array $cached = [];
 
 
-    public function __construct(iDb $object)
+    /**
+     * @param iDb $object
+     */
+    public function __construct(private iDb $object)
     {
-        $this->object = $object;
     }
 
-    public function save()
+    /**
+     * @return bool
+     */
+    public function save(): bool
     {
         //Do smth before
         $start = microtime(true);
-        $this->object->save();
+        $result = $this->object->save();
         //Do smth after
         $this->time = microtime(true) - $start;
+        return $result;
     }
 
-    public function get(): string
+    /**
+     * @return array
+     */
+    public function get(): array
     {
         if (empty($this->cached)) {
             $this->cached = $this->object->get();
         } else {
-            $this->cached = $this->cached . ' | asked from cache';
+            $this->cached[] = ' | asked from cache';
         }
         return $this->cached;
     }
