@@ -1,32 +1,32 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\DesignPatterns\Structural\Decorator;
-
 
 use App\DesignPatterns\Structural\Decorator\OrderDecorator\MailOrder;
 use App\DesignPatterns\Structural\Decorator\OrderDecorator\OMOrder;
 use App\DesignPatterns\Structural\Decorator\OrderDecorator\OrderBase;
 use App\Models\Order;
 
-class DecoratorExample
+/**
+ * Class DecoratorExample
+ * @package App\DesignPatterns\Structural\Decorator
+ */
+final class DecoratorExample
 {
-    public function run()
-    {
-        $order = new Order;
-        $om_order = new OrderBase($order);
-        $mail_order = new MailOrder($om_order);
-        $om_order = new OMOrder($mail_order);
-        $om_order->operate($order);
-        return $order->recipients;
-    }
-
-    public static function getName()
+    /**
+     * @return string
+     */
+    public static function getName(): string
     {
         return 'Декоратор';
     }
 
-    public static function getDescription()
+    /**
+     * @return string
+     */
+    public static function getDescription(): string
     {
         return '
         <b>Декоратор</b> — это структурный паттерн, который позволяет добавлять объектам новые поведения на лету, помещая их в объекты-обёртки.<br />
@@ -47,5 +47,18 @@ class DecoratorExample
         Еще можно представить, например, класс заказа. Сначала был базовый заказ, потом нужно сделать заказ, который попадет в систему гугл.апи, потом уйдет в апи внутренней системы, потом отправится по почте, потом запишется в БД и тд.<br /><br />
         То есть декораторы - это классы операций над базовым классом, объектом или элементом.
         ';
+    }
+
+    /**
+     * @return array|string
+     */
+    public function run(): array|string
+    {
+        $order = new Order;
+        $baseOrder = new OrderBase($order);
+        $mailOrder = new MailOrder($baseOrder);
+        $omOrder = new OMOrder($mailOrder);
+        $omOrder->operate($order);
+        return $order->recipients;
     }
 }

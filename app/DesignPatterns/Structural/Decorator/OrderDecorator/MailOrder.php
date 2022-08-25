@@ -1,14 +1,23 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\DesignPatterns\Structural\Decorator\OrderDecorator;
 
 
 use App\Models\Order;
 
-class MailOrder extends BaseDecorator
+/**
+ * Class OrderBase
+ * @package App\DesignPatterns\Structural\Decorator\OrderDecorator
+ */
+final class MailOrder extends BaseDecorator
 {
-    public function operate(Order $order)
+    /**
+     * @param Order $order
+     * @return void
+     */
+    public function operate(Order $order): void
     {
         parent::operate($order);
         $order->recipients[] = 'MAIL';

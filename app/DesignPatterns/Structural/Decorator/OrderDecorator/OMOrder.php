@@ -1,15 +1,20 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\DesignPatterns\Structural\Decorator\OrderDecorator;
 
 
 use App\Models\Order;
 
-class OMOrder extends BaseDecorator
+/**
+ * Class BaseDecorator
+ * @package App\DesignPatterns\Structural\Decorator\OrderDecorator
+ */
+final class OMOrder extends BaseDecorator
 {
 
-    public function operate(Order $order)
+    public function operate(Order $order): void
     {
         parent::operate($order);
 
