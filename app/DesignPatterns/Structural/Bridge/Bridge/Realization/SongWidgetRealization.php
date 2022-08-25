@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\DesignPatterns\Structural\Bridge\Bridge\Realization;
 
@@ -7,27 +8,24 @@ namespace App\DesignPatterns\Structural\Bridge\Bridge\Realization;
 use App\DesignPatterns\Structural\Bridge\Bridge\Realization\Interfaceces\WidgetRealizationInterface;
 use App\DesignPatterns\Structural\Bridge\Models\Song;
 
-class SongWidgetRealization implements WidgetRealizationInterface
+/**
+ * Class SongWidgetRealization
+ * @package App\DesignPatterns\Structural\Bridge\Bridge\Realization
+ */
+final class SongWidgetRealization implements WidgetRealizationInterface
 {
 
     /**
-     * @var Song
+     * @param Song $entity
      */
-    private $entity;
-
-    /**
-     * SongWidgetRealization constructor.
-     * @param Song $song
-     */
-    public function __construct(Song $song)
+    public function __construct(private Song $entity)
     {
-        $this->entity = $song;
     }
 
     /**
      * @return int
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->entity->id;
     }
@@ -36,7 +34,7 @@ class SongWidgetRealization implements WidgetRealizationInterface
      * Тут повезло, возвращаем Name, но где-то может быть title, например
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->entity->name;
     }
@@ -44,7 +42,7 @@ class SongWidgetRealization implements WidgetRealizationInterface
     /**
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->entity->description;
     }
@@ -54,7 +52,7 @@ class SongWidgetRealization implements WidgetRealizationInterface
      *
      * @return int
      */
-    public function getLength()
+    public function getLength(): int
     {
         return $this->entity->length;
     }

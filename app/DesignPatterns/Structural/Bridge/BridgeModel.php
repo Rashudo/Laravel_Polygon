@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\DesignPatterns\Structural\Bridge;
 
@@ -9,38 +10,28 @@ use App\DesignPatterns\Structural\Bridge\Bridge\Abstraction\WidgetMiddle;
 use App\DesignPatterns\Structural\Bridge\Bridge\Abstraction\WidgetSmall;
 use App\DesignPatterns\Structural\Bridge\Bridge\Realization\AlbumWidgetRealization;
 use App\DesignPatterns\Structural\Bridge\Bridge\Realization\SongWidgetRealization;
-use App\DesignPatterns\Structural\Bridge\Models\Song;
 use App\DesignPatterns\Structural\Bridge\Models\Album;
+use App\DesignPatterns\Structural\Bridge\Models\Song;
 
+/**
+ * Class BridgeModel
+ * @package App\DesignPatterns\Structural\Bridge
+ */
 class BridgeModel
 {
 
-    public function run()
-    {
-        $songRealization = new SongWidgetRealization(new Song);
-        $albumRealization = new AlbumWidgetRealization(new Album);
-
-        $widgets = [
-            new WidgetBig,
-            new WidgetMiddle,
-            new WidgetSmall
-        ];
-
-        $return = [];
-        foreach ($widgets as $widget) {
-            $return[] = $widget->run($songRealization);
-            $return[] = $widget->run($albumRealization);
-        }
-
-        return $return;
-    }
-
-    public static function getName()
+    /**
+     * @return string
+     */
+    public static function getName(): string
     {
         return 'Мост';
     }
 
-    public static function getDescription()
+    /**
+     * @return string
+     */
+    public static function getDescription(): string
     {
         return '
         <b>Мост</b> — это структурный паттерн проектирования, который разделяет один или несколько классов на две отдельные иерархии — абстракцию и реализацию, позволяя изменять их независимо друг от друга.<br />
@@ -55,5 +46,32 @@ class BridgeModel
         Например, объект большого виджета берет из фасада title и id композиции и объединяет их вместе для рисования сверху. <br />
         Объект средне виджета также опирается на фасад скормленного объекта, но использует только getTitle из фасада. А объект маленького виджета только getId, например.
         ';
+    }
+
+    /**
+     * @return array
+     */
+    public function run(): array
+    {
+        $songRealization = new SongWidgetRealization(
+            new Song
+        );
+        $albumRealization = new AlbumWidgetRealization(
+            new Album
+        );
+
+        $widgets = [
+            new WidgetBig,
+            new WidgetMiddle,
+            new WidgetSmall
+        ];
+
+        $return = [];
+        foreach ($widgets as $widget) {
+            $return[] = $widget->run($songRealization);
+            $return[] = $widget->run($albumRealization);
+        }
+
+        return $return;
     }
 }

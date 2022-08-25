@@ -1,17 +1,20 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\DesignPatterns\Structural\Bridge\Models;
 
-
-class Song
+/**
+ * Class Album
+ * @package App\DesignPatterns\Structural\Bridge\Models
+ */
+final class Song
 {
+    public int $id = 5;
 
-    public $id = 5;
+    public string $name = 'The man who sold the world';
 
-    public $name = 'The man who sold the world';
+    public string $description = 'Some desc of song';
 
-    public $description = 'Some desc of song';
-
-    public $length = 320;
+    public int $length = 320;
 }

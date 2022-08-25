@@ -1,17 +1,20 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\DesignPatterns\Structural\Bridge\Models;
 
-
-class Album
+/**
+ * Class Album
+ * @package App\DesignPatterns\Structural\Bridge\Models
+ */
+final class Album
 {
+    public int $id = 10;
 
-    public $id = 10;
+    public string $title = 'Nevermind';
 
-    public $title = 'Nevermind';
+    public string $description = 'Some desc of Album';
 
-    public $description = 'Some desc of Album';
-
-    public $songs = [120, 145, 136, 189, 340];
+    public array $songs = [120, 145, 136, 189, 340];
 }

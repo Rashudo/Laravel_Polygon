@@ -1,15 +1,24 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\DesignPatterns\Structural\Bridge\Bridge\Abstraction;
 
 
 use App\DesignPatterns\Structural\Bridge\Bridge\Realization\Interfaceces\WidgetRealizationInterface;
 
-class WidgetSmall extends WidgetBase
+/**
+ * Class WidgetBase
+ * @package App\DesignPatterns\Structural\Bridge\Bridge\Abstraction
+ */
+final class WidgetSmall extends WidgetBase
 {
 
-    public function run(WidgetRealizationInterface $realization)
+    /**
+     * @param WidgetRealizationInterface $realization
+     * @return string
+     */
+    public function run(WidgetRealizationInterface $realization): string
     {
         $this->setRealization($realization);
         $viewData = $this->makeViewData();
@@ -23,7 +32,7 @@ class WidgetSmall extends WidgetBase
      *
      * @return array
      */
-    public function makeViewData()
+    public function makeViewData(): array
     {
         $realisation = $this->getRealization();
         $desc = $realisation->getDescription();
@@ -32,7 +41,13 @@ class WidgetSmall extends WidgetBase
         return compact('title', 'desc', 'length');
     }
 
-    public function makeTitle()
+    /**
+     * Тут мы используем фасад реализации, чтобы собрать заголовок виджета
+     * Например, в этом виджете мы соединим название и Id.
+     *
+     * @return string
+     */
+    public function makeTitle(): int
     {
         return $this->getRealization()->getId();
     }

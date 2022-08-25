@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\DesignPatterns\Structural\Bridge\Bridge\Realization;
 
@@ -7,24 +8,24 @@ namespace App\DesignPatterns\Structural\Bridge\Bridge\Realization;
 use App\DesignPatterns\Structural\Bridge\Bridge\Realization\Interfaceces\WidgetRealizationInterface;
 use App\DesignPatterns\Structural\Bridge\Models\Album;
 
-class AlbumWidgetRealization implements WidgetRealizationInterface
+/**
+ * Class AlbumWidgetRealization
+ * @package App\DesignPatterns\Structural\Bridge\Bridge\Realization
+ */
+final class AlbumWidgetRealization implements WidgetRealizationInterface
 {
 
     /**
-     * @var Album
+     * @param Album $entity
      */
-    private $entity;
-
-
-    public function __construct(Album $song)
+    public function __construct(private Album $entity)
     {
-        $this->entity = $song;
     }
 
     /**
      * @return int
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->entity->id;
     }
@@ -33,7 +34,7 @@ class AlbumWidgetRealization implements WidgetRealizationInterface
      * Тут Возвращаем title вместо Name
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->entity->title;
     }
@@ -41,7 +42,7 @@ class AlbumWidgetRealization implements WidgetRealizationInterface
     /**
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->entity->description;
     }
@@ -51,7 +52,7 @@ class AlbumWidgetRealization implements WidgetRealizationInterface
      *
      * @return int
      */
-    public function getLength()
+    public function getLength(): int
     {
         return intval(array_sum($this->entity->songs));
     }
