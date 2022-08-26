@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
@@ -7,18 +8,26 @@ namespace App\Http\Controllers;
 use App\DesignPatterns\Behavioral\ChainOfResponsibility\CorModel;
 use App\DesignPatterns\Behavioral\Command\CommandModel;
 use App\DesignPatterns\Behavioral\Observer\ObserverModel;
+use App\DesignPatterns\Behavioral\State\StateModel;
 use App\DesignPatterns\Behavioral\Strategy\StrategyPattern;
 use App\DesignPatterns\Behavioral\TemplateMethod\TemplateMethodModel;
-use Carbon\Carbon;
-use App\DesignPatterns\Behavioral\State\StateModel;
-use Illuminate\Support\Collection;
 use App\Models\Workers;
+use Carbon\Carbon;
+use Illuminate\Contracts\View\View;
+use Illuminate\Support\Collection;
 
 
-class BehavioralPatternsController
+/**
+ * Class BehavioralPatternsController
+ * @package App\Http\Controllers
+ */
+final class BehavioralPatternsController
 {
 
-    public function strategy()
+    /**
+     * @return View
+     */
+    public function strategy(): View
     {
         $name = StrategyPattern::getName();
         $content = StrategyPattern::getDescription();
@@ -38,7 +47,10 @@ class BehavioralPatternsController
     }
 
 
-    public function template_method()
+    /**
+     * @return View
+     */
+    public function template_method(): View
     {
         $name = TemplateMethodModel::getName();
         $content = TemplateMethodModel::getDescription();
@@ -48,7 +60,10 @@ class BehavioralPatternsController
         return view('patternsDesc', compact(['content', 'name', 'return']));
     }
 
-    public function chain_of_responsibility()
+    /**
+     * @return View
+     */
+    public function chain_of_responsibility(): View
     {
         $name = CorModel::getName();
         $content = CorModel::getDescription();
@@ -59,7 +74,10 @@ class BehavioralPatternsController
     }
 
 
-    public function command()
+    /**
+     * @return View
+     */
+    public function command(): View
     {
         $name = CommandModel::getName();
         $content = CommandModel::getDescription();
@@ -69,7 +87,10 @@ class BehavioralPatternsController
         return view('patternsDesc', compact(['content', 'name', 'return']));
     }
 
-    public function observer()
+    /**
+     * @return View
+     */
+    public function observer(): View
     {
         $name = ObserverModel::getName();
         $content = ObserverModel::getDescription();
@@ -79,7 +100,10 @@ class BehavioralPatternsController
         return view('patternsDesc', compact(['content', 'name', 'return']));
     }
 
-    public function state()
+    /**
+     * @return View
+     */
+    public function state(): View
     {
         $name = StateModel::getName();
         $content = StateModel::getDescription();

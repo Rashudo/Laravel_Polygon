@@ -6,7 +6,7 @@ namespace App\DesignPatterns\Structural\Proxy\Models;
 
 
 use App\DesignPatterns\Structural\Proxy\Interfaces\iDb;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class DBConnector

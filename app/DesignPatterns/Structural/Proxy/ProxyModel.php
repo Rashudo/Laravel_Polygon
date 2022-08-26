@@ -60,8 +60,8 @@ final class ProxyModel
         $db = new DbProxy(new DBConnector());
         $db->save();
         $return['save_time'] = $db->time;
-        $return['get_first'] = $db->get();
-        $return['get_second'] = $db->get();
+        $return['get_first'] = json_encode($db->get());
+        $return['get_second'] = json_encode($db->get());
         return $return;
     }
 }
