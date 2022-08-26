@@ -1,9 +1,12 @@
 <?php
-
+declare(strict_types=1);
 
 namespace App\DesignPatterns\Behavioral\TemplateMethod\Controllers;
 
-
+/**
+ * Class IndexController
+ * @package App\DesignPatterns\Behavioral\TemplateMethod\Controllers
+ */
 abstract class AbstractController
 {
 
@@ -27,15 +30,16 @@ abstract class AbstractController
     /**
      * Потомки обязаны реализовать этот метод
      *
-     * @return array
+     * @return string
      */
     abstract function run(): string;
 
     /**
      * Этот метод может быть пустым, а может быть переопределен в дочерних
      */
-    protected function hook()
+    protected function hook(): string
     {
+        return __METHOD__;
     }
 
     /**

@@ -1,13 +1,16 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\DesignPatterns\Behavioral\TemplateMethod\Controllers;
 
 
-
-class IndexController extends AbstractController
+/**
+ * Class IndexController
+ * @package App\DesignPatterns\Behavioral\TemplateMethod\Controllers
+ */
+final class IndexController extends AbstractController
 {
-
     /**
      * @return string
      */

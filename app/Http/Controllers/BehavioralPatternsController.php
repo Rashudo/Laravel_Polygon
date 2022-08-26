@@ -14,6 +14,7 @@ use App\DesignPatterns\Behavioral\State\StateModel;
 use Illuminate\Support\Collection;
 use App\Models\Workers;
 
+
 class BehavioralPatternsController
 {
 

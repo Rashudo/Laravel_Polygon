@@ -1,26 +1,24 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\DesignPatterns\Behavioral\TemplateMethod;
 
 
 use App\DesignPatterns\Behavioral\TemplateMethod\Controllers\IndexController;
 
-class TemplateMethodModel
+/**
+ * Class TemplateMethodModel
+ * @package App\DesignPatterns\Behavioral\TemplateMethod
+ */
+final class TemplateMethodModel
 {
-    public function run()
-    {
-        $controller = new IndexController();
-        return $controller->handleRequest();
-    }
-
-
-    public static function getName()
+    public static function getName(): string
     {
         return 'Шаблонный метод';
     }
 
-    public static function getDescription()
+    public static function getDescription(): string
     {
         return '
         <b>Шаблонный метод</b> это поведенческий паттерн, задающий скелет алгоритма в суперклассе и заставляющий подклассы реализовать конкретные шаги этого алгоритма.<br />
@@ -30,5 +28,11 @@ class TemplateMethodModel
         Яркий пример - это контроллеры, есть базовый абстрактный контроллер, где есть логика, но есть абстрактный метод run, который должен быть реализован в потомке.
 
         ';
+    }
+
+    public function run(): array
+    {
+        $controller = new IndexController();
+        return $controller->handleRequest();
     }
 }
