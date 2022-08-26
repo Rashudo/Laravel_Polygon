@@ -13,9 +13,13 @@ abstract class AbstractState implements iState
     /**
      * @var iContext
      */
-    protected $context;
+    protected iContext $context;
 
-    public function setContext(iContext $context)
+    /**
+     * @param iContext $context
+     * @return void
+     */
+    public function setContext(iContext $context): void
     {
         $this->context = $context;
     }
