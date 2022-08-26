@@ -1,33 +1,24 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\DesignPatterns\Behavioral\ChainOfResponsibility;
 
 
 use App\DesignPatterns\Behavioral\ChainOfResponsibility\Middlewares\InitMiddleware;
 
-class CorModel
+/**
+ * Class CorModel
+ * @package App\DesignPatterns\Behavioral\ChainOfResponsibility
+ */
+final class CorModel
 {
-    public function run()
-    {
-
-        $handler = new InitMiddleware;
-        $handler
-            ->middleware("access")
-            ->middleware("admin")
-            ->middleware("throttlig");
-        $request = 'AdminAccess1';
-        $result['result'] = $handler->handle($request);
-        return $result;
-    }
-
-
-    public static function getName()
+    public static function getName(): string
     {
         return 'Цепочка обязанностей';
     }
 
-    public static function getDescription()
+    public static function getDescription(): string
     {
         return '
         <b>Цепочка обязанностей</b> это поведенческий паттерн, позволяющий передавать запрос по цепочке потенциальных обработчиков, пока один из них не обработает запрос.<br />
@@ -44,5 +35,17 @@ class CorModel
 
 
         ';
+    }
+
+    public function run(): array
+    {
+        $handler = new InitMiddleware();
+        $handler
+            ->middleware("access")
+            ->middleware("admin")
+            ->middleware("throttlig");
+        $request = 'AdminAccess1';
+        $result['result'] = $handler->handle($request);
+        return $result;
     }
 }
