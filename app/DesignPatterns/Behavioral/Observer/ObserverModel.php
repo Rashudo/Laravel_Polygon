@@ -11,7 +11,7 @@ use App\DesignPatterns\Behavioral\Observer\Observers\SmsNotifications;
 class ObserverModel
 {
 
-    public function run()
+    public function run(): array
     {
         $repository = new UserRepository();
         $loggerObserver = new Logger();
@@ -31,12 +31,12 @@ class ObserverModel
     }
 
 
-    public static function getName()
+    public static function getName(): string
     {
         return 'Наблюдатель';
     }
 
-    public static function getDescription()
+    public static function getDescription(): string
     {
         return '
         <b>Наблюдатель</b> это поведенческий паттерн, который позволяет объектам оповещать другие объекты об изменениях своего состояния.<br />
@@ -44,8 +44,6 @@ class ObserverModel
 
         Есть субъект, который выполняет какую-то важную логику. После этого выполнения нужно оповестить подписчиков, что действие совершилось, ну или что начало совершаться. <br />
         Уже есть встроенные интерфейсы для реализации этого паттерна \SplSubject - для субъекта, который выполняет логику, и \SplObserver - для наблюдателя
-
-
         ';
     }
 }
