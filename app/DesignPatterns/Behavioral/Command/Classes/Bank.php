@@ -1,25 +1,30 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\DesignPatterns\Behavioral\Command\Classes;
 
 
-use App\DesignPatterns\Behavioral\Command\Interfaces\iCommand;
 use App\DesignPatterns\Behavioral\Command\Commands\{IncomeCommand, WithdrawCommand};
+use App\DesignPatterns\Behavioral\Command\Interfaces\iCommand;
 
-class Bank
+/**
+ * Class Bank
+ * @package App\DesignPatterns\Behavioral\Command\Classes
+ */
+final class Bank
 {
     /**
      * @var array of iCommand
      */
-    private $commands = [];
+    private array $commands = [];
 
-    public function __construct()
-    {
-
-    }
-
-    public function operate(BankAccount $account, $amount)
+    /**
+     * @param BankAccount $account
+     * @param $amount
+     * @return void
+     */
+    public function operate(BankAccount $account, $amount): void
     {
         if ($amount < 0) {
             $command = new WithdrawCommand($account, abs($amount));
@@ -27,10 +32,14 @@ class Bank
             $command = new IncomeCommand($account, abs($amount));
         }
         $command->execute();
-        array_push($this->commands, $command);
+        $this->commands[] = $command;
     }
 
-    public function cancel($num)
+    /**
+     * @param $num
+     * @return void
+     */
+    public function cancel($num): void
     {
         for ($i = count($this->commands) - 1; $i >= count($this->commands) - $num; $i--) {
             $this->commands[$i]->cancel();
@@ -53,7 +62,8 @@ class Bank
             } else {
                 $results[$i] = 'Зачисление для ';
             }
-            $results[$i] .= $command->returnAccountName() . ' на ' . $command->returnAmount() . 'руб.' . ' Статус операции: ' . (($command->returnStatus()) ? 'проведена' : 'отменена');
+            $results[$i] .= $command->returnAccountName() . ' на ' . $command->returnAmount(
+                ) . 'руб.' . ' Статус операции: ' . (($command->returnStatus()) ? 'проведена' : 'отменена');
             ++$i;
         }
         return $results;

@@ -1,18 +1,21 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\DesignPatterns\Behavioral\Command\Classes;
 
 
-class BankAccount
+/**
+ * Class BankAccount
+ * @package App\DesignPatterns\Behavioral\Command\Classes
+ */
+final class BankAccount
 {
-    public $name;
-
-    public $balance = 0;
-
-    public function __construct(string $name, $balance)
+    /**
+     * @param string $name
+     * @param int $balance
+     */
+    public function __construct(public string $name, public int $balance = 0)
     {
-        $this->name = $name;
-        $this->balance = $balance;
     }
 }

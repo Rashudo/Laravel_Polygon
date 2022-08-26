@@ -1,36 +1,33 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\DesignPatterns\Behavioral\Command\Commands;
 
 
-use App\DesignPatterns\Behavioral\Command\Interfaces\iCommand;
 use App\DesignPatterns\Behavioral\Command\Classes\BankAccount;
+use App\DesignPatterns\Behavioral\Command\Interfaces\iCommand;
 
+/**
+ * Class WithdrawCommand
+ * @package App\DesignPatterns\Behavioral\Command\Commands
+ */
 abstract class AbstractCommand implements iCommand
 {
-    public $account;
-
-    /**
-     * @var int
-     */
-    public $amount = 0;
-
     /**
      * @var bool
      */
-    public $status = false;
+    public bool $status = false;
 
 
     /**
-     * AbstractCommand constructor.
      * @param BankAccount $account
-     * @param $amount
+     * @param int $amount
      */
-    public function __construct(BankAccount $account, $amount)
+    public function __construct(
+        protected BankAccount $account,
+        protected int $amount)
     {
-        $this->account = $account;
-        $this->amount = $amount;
     }
 
     /**
